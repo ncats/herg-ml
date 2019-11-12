@@ -90,7 +90,7 @@ print('class weights: %s' % class_weight_dict)
 
 # create an LSTM model with multi-head attention and hidden dense layers
 model = Sequential()
-model.add(Embedding(100, 32, input_length=100))
+model.add(Embedding(100, 128, input_length=100))
 model.add(LSTM(128, return_sequences=True))
 model.add(MultiHeadAttention(head_num=4, name='Multi-Head1',))
 '''
@@ -109,7 +109,7 @@ model.add(Dense(100, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer=Adam(0.0001))
-model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs)
+model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, class_weight=class_weight_dict)
 score = model.evaluate(X_test, y_test, batch_size=batch_size)
 
 print("Results: %.2f (%.2f) MSE" % (score.mean(), score.std()))
