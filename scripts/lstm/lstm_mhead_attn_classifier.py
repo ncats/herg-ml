@@ -24,7 +24,7 @@ from attention import Attention
 from sklearn.utils import class_weight
 
 max_len = 100
-batch_size = 128
+batch_size = 32
 epochs = 10
 
 # read training data
@@ -90,22 +90,11 @@ print('class weights: %s' % class_weight_dict)
 
 # create an LSTM model with multi-head attention and hidden dense layers
 model = Sequential()
-model.add(Embedding(100, 128, input_length=100))
+model.add(Embedding(100, 64, input_length=100))
 model.add(LSTM(128, return_sequences=True))
 model.add(MultiHeadAttention(head_num=4, name='Multi-Head1',))
-'''
-model.add(MultiHead(
-    layer=keras.layers.Bidirectional(keras.layers.LSTM(units=128), name='LSTM'),
-    layer_num=5,
-    reg_index=[1, 4],
-    reg_slice=(slice(None, None), slice(32, 48)),
-    reg_factor=0.1,
-    name='Multi-Head-Attention',
-))
-'''
 model.add(Flatten())
 model.add(Dense(300, activation='relu'))
-model.add(Dense(100, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer=Adam(0.0001))
