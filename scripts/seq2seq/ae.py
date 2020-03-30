@@ -21,12 +21,12 @@ seed = 7
 np.random.seed(seed)
 
 # reading training dataset
-dataset = pd.read_csv("/work/vishal/herg/data/guacamol/chembl_25/chembl25_train.smiles", delimiter=",", header=None)
-X_train = dataset.iloc[:,0:1].values
+dataset = pd.read_csv("../../data/chembl25/chembl25_train.smiles", delimiter=",", header=None)
+X_train = dataset.iloc[:,0:1].values # smiles
 
 # reading test dataset
-dataset = pd.read_csv("/work/vishal/herg/data/guacamol/chembl_25/chembl25_test.smiles", delimiter=",", header=None)
-X_test = dataset.iloc[:,0:1].values
+dataset = pd.read_csv("../../data/chembl25/chembl25_test.smiles", delimiter=",", header=None)
+X_test = dataset.iloc[:,0:1].values # smiles
 
 
 X_train = X_train[:,0]
@@ -45,12 +45,12 @@ print(int_to_char)
 max_len = embed-1
 print('max_len: '+str(max_len))
 
-output = open('/work/vishal/herg/models/ae_guacamol/chembl_25/char_to_int.pkl', 'wb')
+output = open('ae/char_to_int.pkl', 'wb')
 pickle.dump(char_to_int, output)
 output.close()
 print('saved char to int model...')
 
-output = open('/work/vishal/herg/models/ae_guacamol/chembl_25/int_to_char.pkl', 'wb')
+output = open('ae/int_to_char.pkl', 'wb')
 pickle.dump(int_to_char, output)
 output.close()
 print('saved int to char model...')
@@ -117,17 +117,17 @@ model.fit([X_train, X_train],[XX_train],
                     epochs=5,
                     batch_size=256,
                     #shuffle=True,
-                    validation_data=[[X_test,X_test],[XX_test] ])
+                    validation_data=[[X_test,X_test],[XX_test]])
 
 smiles_pred = []
 smiles_act = []
 
-model.save("/work/vishal/herg/models/ae_guacamol/chembl_25/smiles2smiles.h5")
+model.save("ae/smiles2smiles.h5")
 
 # check output (i.e. compare input SMILES with output SMILES)
 
 b = 0
-for i in range(100):
+for i in range(1000):
     v = model.predict([X_test[i:i+1], X_test[i:i+1]])
     idxs = np.argmax(v, axis=2)
     pred=  "".join([int_to_char[h] for h in idxs[0]])[:-1]
@@ -141,11 +141,5 @@ for i in range(100):
     
 print ("Number of errors: %s" % b)
 
-with open('/work/vishal/herg/results/ae_guacamol/results_pred_chembl_25.csv', 'w', newline = '') as afile:
-    for p in range (len(smiles_pred)):
-       aa= str(smiles_act[p])+","+str(smiles_pred[p])+"\n"
-       afile.write(aa)
-afile.close()
-
 smiles_to_latent_model = Model(encoder_inputs, encoder_outputs)
-smiles_to_latent_model.save("/work/vishal/herg/models/ae_guacamol/chembl_25/smi2lat.h5")
+smiles_to_latent_model.save("ae/smi2lat.h5")
