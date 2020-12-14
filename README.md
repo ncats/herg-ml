@@ -53,6 +53,21 @@ The code requires two types of molecular descriptors to be calculated before han
     conda deactivate
     ```
 
+**Note**: These instructions were tested in MacOS with Python 3.6
 
 
-**Note**: These instructions were tested in MacOS with Python 3.6. A web-based prediction service will be made available soon. If you have troubles executing the models, please [contact us](mailto:vishalbabu.siramshetty@nih.gov?subject=[GitHub]%20hERG%20Models).
+## Results
+
+We compared the performance of our consensus model (using the validation set) against previous hERG models proposed by [Braga et al.](https://pubmed.ncbi.nlm.nih.gov/24805060/) ([Pred-hERG 4.2](http://predherg.labmol.com.br/)) and [Ryu et al.](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757) ([DeepHIT](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757)).
+
+**Model** | **Balanced Accuracy** | **Sensitivity** | **Specificity** |
+| :---: | :---: | :---: | :---: |
+Our Consensus | 0.80 | 0.74 | 0.86 |
+Pred-hERG 4.2<sup>a</sup> | 0.77 | 0.74 | 0.81 |
+DeepHIT | 0.75 | 0.73 | 0.77 |
+
+<sup>a</sup> Pred-hERG 4.2 returned predictions for 835 out 839 validation set compounds.
+
+## Web-based Predictions
+
+A web-based prediction service will be made available soon. If you experience troubles executing the currently available models, please [contact us](mailto:vishalbabu.siramshetty@nih.gov?subject=[GitHub]%20hERG%20Models).
