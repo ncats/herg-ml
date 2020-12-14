@@ -1,6 +1,6 @@
 # Critical Assessment of Artificial Intelligence Methods for Prediction of hERG Channel Inhibition in the “Big Data” Era
 
-This repository contains the code and data related to our [recent article](https://pubs.acs.org/doi/10.1021/acs.jcim.0c00884){:target="_blank"} that compares classical ML appproaches with newer AI techniques in predicting hERG channel inhibition. A breif description of contents of the repository is provided below.
+This repository contains the code and data related to our <a href="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00884" target="_blank">recent article</a> that compares classical ML appproaches with newer AI techniques in predicting hERG channel inhibition. A breif description of contents of the repository is provided below.
 
 * `data/`       :  datasets used to build and validate the models
 * `ext_models/` :  prospective validation results from external hERG models (StarDrop and PredhERG)
