@@ -1,11 +1,11 @@
 # Critical Assessment of Artificial Intelligence Methods for Prediction of hERG Channel Inhibition in the “Big Data” Era
 
-This repository contains the code and data related to our [recent article](https://pubs.acs.org/doi/10.1021/acs.jcim.0c00884) that compares classical ML appproaches with newer AI techniques in predicting hERG channel inhibition. A breif explanation of contents of the repository is provided below.
+This repository contains the code and data related to our [recent article](https://pubs.acs.org/doi/10.1021/acs.jcim.0c00884){:target="_blank"} that compares classical ML appproaches with newer AI techniques in predicting hERG channel inhibition. A breif description of contents of the repository is provided below.
 
-* `data/`       :  datasets used to build and validate the models and the datasets used to build the AE and AAE models
+* `data/`       :  datasets used to build and validate the models
 * `ext_models/` :  prospective validation results from external hERG models (StarDrop and PredhERG)
-* `notebooks/`  :  a jupyter notebook (and model dependecies) that allow prediction on a new dataset
-* `scripts/`    :  scripts used to build hERG models and the AE and AAE models
+* `notebooks/`  :  a jupyter notebook (and model dependecies) that allows consensus prediction on a test dataset
+* `scripts/`    :  scripts used to build hERG models
 
 
 ## Predicting a new test set
@@ -58,7 +58,7 @@ The code requires two types of molecular descriptors to be calculated before han
 
 ## Results
 
-We compared our consensus model (using the validation set) against previous hERG models proposed by [Braga et al.](https://pubmed.ncbi.nlm.nih.gov/24805060/) ([Pred-hERG 4.2](http://predherg.labmol.com.br/)) and [Ryu et al.](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757) ([DeepHIT](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757)).
+We compared our consensus model (using the [prospective validation set](https://github.com/ncats/herg-ml/blob/master/data/train_valid/validation_set.csv)) against previous hERG models proposed by [Braga et al.](https://pubmed.ncbi.nlm.nih.gov/24805060/) ([Pred-hERG 4.2](http://predherg.labmol.com.br/)) and [Ryu et al.](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757) ([DeepHIT](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757)).
 
 **Model** | **Balanced Accuracy** | **Sensitivity** | **Specificity** |
 | :---: | :---: | :---: | :---: |
@@ -70,4 +70,4 @@ DeepHIT | 0.75 | 0.73 | 0.77 |
 
 ## Web-based Predictions
 
-A web-based prediction service will be made available soon. If you experience troubles executing the currently available models, please [contact us](mailto:vishalbabu.siramshetty@nih.gov?subject=[GitHub]%20hERG%20Models).
+A web-based prediction service will be made available in future. If you experience troubles using the currently available models, please [contact us](mailto:vishalbabu.siramshetty@nih.gov?subject=[GitHub]%20hERG%20Models).
