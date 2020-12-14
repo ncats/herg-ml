@@ -58,7 +58,7 @@ The code requires two types of molecular descriptors to be calculated before han
 
 ## Results
 
-We compared the performance of our consensus model (using the validation set) against previous hERG models proposed by [Braga et al.](https://pubmed.ncbi.nlm.nih.gov/24805060/) ([Pred-hERG 4.2](http://predherg.labmol.com.br/)) and [Ryu et al.](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757) ([DeepHIT](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757)).
+We compared our consensus model (using the validation set) against previous hERG models proposed by [Braga et al.](https://pubmed.ncbi.nlm.nih.gov/24805060/) ([Pred-hERG 4.2](http://predherg.labmol.com.br/)) and [Ryu et al.](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757) ([DeepHIT](https://academic.oup.com/bioinformatics/article/36/10/3049/5727757)).
 
 **Model** | **Balanced Accuracy** | **Sensitivity** | **Specificity** |
 | :---: | :---: | :---: | :---: |
