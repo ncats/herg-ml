@@ -1,3 +1,58 @@
-# herg-ml
+# Critical Assessment of Artificial Intelligence Methods for Prediction of hERG Channel Inhibition in the “Big Data” Era
 
-A collection of datasets and machine learning models for predicting hERG channel blockade.
+This repository contains the code and data related to our [recent article](https://pubs.acs.org/doi/10.1021/acs.jcim.0c00884) that compares classical ML appproaches with newer AI techniques in predicting hERG channel inhibition. A breif explanation of contents of the repository is provided below.
+
+* `data/`       :  datasets used to build and validate the models and the datasets used to build the AE and AAE models
+* `ext_models/` :  prospective validation results from external hERG models (StarDrop and PredhERG)
+* `notebooks/`  :  a jupyter notebook (and model dependecies) that allow prediction on a new dataset
+* `scripts/`    :  scripts used to build hERG models and the AE and AAE models
+
+
+## Predicting a new test set
+
+The Jupyter notebook in `notebooks/` can be used to perform a consenus prediction based on the best individual models developed in this study.
+
+
+### Instructions
+
+The code requires two types of molecular descriptors to be calculated before hand: RDKit descriptors and Morgan fingerprints. The models were built using RDKit features (a total of 119 descriptors) and Morgan fingerprints (1024 bits; radius 2) that were calculated in KNIME. The first column of the file must be SMILES followed by the RDKit descriptors and Morgan fingerprints in the same order. An example test set is available in the code: `notebooks/blockers_sampled.csv`.
+ 
+
+1. Clone the repository and fetch all files (some files are large and need to be fetched using git lfs)
+
+    ```
+    git clone https://github.com/ncats/herg-ml.git
+    cd herg-ml
+    git lfs install
+    git lfs fetch
+    git lfs pull
+    
+    ```
+    
+2. Create and activate a conda environment
+
+    ```
+    conda create -n herg-ml python=3.6
+    conda activate herg-ml
+    bash install.sh
+    ```
+    
+3. Launch Jupyter (opens the default web browser - http://localhost:8888/tree)
+
+    ```
+    jupyter notebook
+    ```
+   
+4. Open the file `notebooks/consensus_model.ipynb` and execute the notebook following the in-line instructions
+
+5. To end the notebook session, press `Ctrl+C` and choose `y` when prompted to shutdown the notebook server
+
+6. Deactive the conda environment when finshed
+
+    ```
+    conda deactivate
+    ```
+
+
+
+**Note**: These instructions were tested in MacOS with Python 3.6. A web-based prediction service will be made available soon. If you have troubles executing the models, please [contact us](mailto:vishalbabu.siramshetty@nih.gov?subject=[GitHub]%20hERG%20Models).
