@@ -1,3 +1,5 @@
+This repository has been archived and is no longer maintained.The code is provided for historical reference and may contain unpatched or unknown vulnerabilities. It should not be used in production systems.
+
 # Critical Assessment of Artificial Intelligence Methods for Prediction of hERG Channel Inhibition in the “Big Data” Era
 
 This repository contains the code and data related to our <a href="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00884" target="_blank">recent article</a> that compares classical ML appproaches with newer AI techniques in predicting hERG channel inhibition. A breif description of contents of the repository is provided below.
